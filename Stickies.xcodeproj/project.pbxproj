@@ -12,7 +12,48 @@
 		E4623B3225D4DD8D00EFF627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4623B3125D4DD8D00EFF627 /* Assets.xcassets */; };
 		E4623B3525D4DD8D00EFF627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4623B3325D4DD8D00EFF627 /* Main.storyboard */; };
 		E4623B3825D4DD8D00EFF627 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B3725D4DD8D00EFF627 /* main.m */; };
+		E4623B4225D4DEAF00EFF627 /* StickiesService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B4125D4DEAF00EFF627 /* StickiesService.m */; };
+		E4623B4825D4EE4C00EFF627 /* SNUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B4725D4EE4C00EFF627 /* SNUtility.m */; };
+		E4623B4F25D50F3800EFF627 /* SNDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B4E25D50F3800EFF627 /* SNDocument.m */; };
+		E4623B5325D51ACA00EFF627 /* SNWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B5225D51ACA00EFF627 /* SNWindow.m */; };
+		E4623B5625D51DEE00EFF627 /* SNMigrationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B5525D51DEE00EFF627 /* SNMigrationWindowController.m */; };
+		E4623B5C25D5232500EFF627 /* SNDashboardStickiesImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B5B25D5232500EFF627 /* SNDashboardStickiesImporter.m */; };
+		E4623B6325D5D7B100EFF627 /* SNMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B6225D5D7B100EFF627 /* SNMenuController.m */; };
+		E4623B6625D5D96800EFF627 /* SNFindController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B6525D5D96800EFF627 /* SNFindController.m */; };
+		E4623B6B25D5F3FB00EFF627 /* SNDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4623B6A25D5F3FB00EFF627 /* SNDocument.xib */; };
+		E4623B7C25D6007200EFF627 /* StickiesMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B7B25D6007200EFF627 /* StickiesMigration.m */; };
+		E4623B7E25D6007200EFF627 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B7D25D6007200EFF627 /* main.m */; };
+		E4623B8225D6007200EFF627 /* StickiesMigration.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = E4623B7725D6007200EFF627 /* StickiesMigration.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E4623B9C25D60A6A00EFF627 /* SNMigrationWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4623B9B25D60A6A00EFF627 /* SNMigrationWindowController.xib */; };
+		E4623BAA25D624E900EFF627 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623BA925D624E900EFF627 /* Document.m */; };
+		E4623BB825D6739A00EFF627 /* 283D5D66-E204-497A-A0DB-3B5D7963085A.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = E4623BB725D6739A00EFF627 /* 283D5D66-E204-497A-A0DB-3B5D7963085A.rtfd */; };
+		E4623BBC25D6739F00EFF627 /* 9EDB3CA4-AF20-4B48-9583-043940037F0E.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = E4623BBB25D6739F00EFF627 /* 9EDB3CA4-AF20-4B48-9583-043940037F0E.rtfd */; };
+		E4623BC025D6742500EFF627 /* .SavedStickiesState in Resources */ = {isa = PBXBuildFile; fileRef = E4623BBF25D6742500EFF627 /* .SavedStickiesState */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4623B8025D6007200EFF627 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4623B2025D4DD8B00EFF627 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4623B7625D6007200EFF627;
+			remoteInfo = StickiesMigration;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4623B8625D6007200EFF627 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				E4623B8225D6007200EFF627 /* StickiesMigration.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E4623B2825D4DD8B00EFF627 /* Stickies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stickies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,10 +66,47 @@
 		E4623B3625D4DD8D00EFF627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4623B3725D4DD8D00EFF627 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4623B3925D4DD8D00EFF627 /* Stickies.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stickies.entitlements; sourceTree = "<group>"; };
+		E4623B4025D4DE8700EFF627 /* StickiesService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StickiesService.h; sourceTree = "<group>"; };
+		E4623B4125D4DEAF00EFF627 /* StickiesService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StickiesService.m; sourceTree = "<group>"; };
+		E4623B4625D4EE4100EFF627 /* SNUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNUtility.h; sourceTree = "<group>"; };
+		E4623B4725D4EE4C00EFF627 /* SNUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNUtility.m; sourceTree = "<group>"; };
+		E4623B4D25D50F1200EFF627 /* SNDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNDocument.h; sourceTree = "<group>"; };
+		E4623B4E25D50F3800EFF627 /* SNDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNDocument.m; sourceTree = "<group>"; };
+		E4623B5125D51AC100EFF627 /* SNWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNWindow.h; sourceTree = "<group>"; };
+		E4623B5225D51ACA00EFF627 /* SNWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWindow.m; sourceTree = "<group>"; };
+		E4623B5525D51DEE00EFF627 /* SNMigrationWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNMigrationWindowController.m; sourceTree = "<group>"; };
+		E4623B5825D51DFC00EFF627 /* SNMigrationWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNMigrationWindowController.h; sourceTree = "<group>"; };
+		E4623B5B25D5232500EFF627 /* SNDashboardStickiesImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNDashboardStickiesImporter.m; sourceTree = "<group>"; };
+		E4623B5F25D5232D00EFF627 /* SNDashboardStickiesImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNDashboardStickiesImporter.h; sourceTree = "<group>"; };
+		E4623B6125D5D7A800EFF627 /* SNMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNMenuController.h; sourceTree = "<group>"; };
+		E4623B6225D5D7B100EFF627 /* SNMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNMenuController.m; sourceTree = "<group>"; };
+		E4623B6525D5D96800EFF627 /* SNFindController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNFindController.m; sourceTree = "<group>"; };
+		E4623B6825D5D97100EFF627 /* SNFindController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNFindController.h; sourceTree = "<group>"; };
+		E4623B6A25D5F3FB00EFF627 /* SNDocument.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SNDocument.xib; sourceTree = "<group>"; };
+		E4623B7725D6007200EFF627 /* StickiesMigration.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = StickiesMigration.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4623B7925D6007200EFF627 /* StickiesMigrationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StickiesMigrationProtocol.h; sourceTree = "<group>"; };
+		E4623B7A25D6007200EFF627 /* StickiesMigration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StickiesMigration.h; sourceTree = "<group>"; };
+		E4623B7B25D6007200EFF627 /* StickiesMigration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StickiesMigration.m; sourceTree = "<group>"; };
+		E4623B7D25D6007200EFF627 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E4623B7F25D6007200EFF627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4623B9B25D60A6A00EFF627 /* SNMigrationWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SNMigrationWindowController.xib; sourceTree = "<group>"; };
+		E4623BA525D61C7700EFF627 /* StickiesProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StickiesProtocol.h; sourceTree = "<group>"; };
+		E4623BA825D624DF00EFF627 /* Document.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		E4623BA925D624E900EFF627 /* Document.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		E4623BB725D6739A00EFF627 /* 283D5D66-E204-497A-A0DB-3B5D7963085A.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "283D5D66-E204-497A-A0DB-3B5D7963085A.rtfd"; sourceTree = "<group>"; };
+		E4623BBB25D6739F00EFF627 /* 9EDB3CA4-AF20-4B48-9583-043940037F0E.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = "9EDB3CA4-AF20-4B48-9583-043940037F0E.rtfd"; sourceTree = "<group>"; };
+		E4623BBF25D6742500EFF627 /* .SavedStickiesState */ = {isa = PBXFileReference; lastKnownFileType = text; path = .SavedStickiesState; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E4623B2525D4DD8B00EFF627 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4623B7425D6007200EFF627 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				E4623B2A25D4DD8B00EFF627 /* Stickies */,
+				E4623B7825D6007200EFF627 /* StickiesMigration */,
 				E4623B2925D4DD8B00EFF627 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				E4623B2825D4DD8B00EFF627 /* Stickies.app */,
+				E4623B7725D6007200EFF627 /* StickiesMigration.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,17 +137,53 @@
 		E4623B2A25D4DD8B00EFF627 /* Stickies */ = {
 			isa = PBXGroup;
 			children = (
+				E4623BBB25D6739F00EFF627 /* 9EDB3CA4-AF20-4B48-9583-043940037F0E.rtfd */,
+				E4623BB725D6739A00EFF627 /* 283D5D66-E204-497A-A0DB-3B5D7963085A.rtfd */,
 				E4623B2B25D4DD8B00EFF627 /* AppDelegate.h */,
 				E4623B2C25D4DD8B00EFF627 /* AppDelegate.m */,
-				E4623B2E25D4DD8B00EFF627 /* ViewController.h */,
-				E4623B2F25D4DD8B00EFF627 /* ViewController.m */,
 				E4623B3125D4DD8D00EFF627 /* Assets.xcassets */,
-				E4623B3325D4DD8D00EFF627 /* Main.storyboard */,
 				E4623B3625D4DD8D00EFF627 /* Info.plist */,
 				E4623B3725D4DD8D00EFF627 /* main.m */,
+				E4623B3325D4DD8D00EFF627 /* Main.storyboard */,
+				E4623B5F25D5232D00EFF627 /* SNDashboardStickiesImporter.h */,
+				E4623B5B25D5232500EFF627 /* SNDashboardStickiesImporter.m */,
+				E4623B4D25D50F1200EFF627 /* SNDocument.h */,
+				E4623B4E25D50F3800EFF627 /* SNDocument.m */,
+				E4623B6A25D5F3FB00EFF627 /* SNDocument.xib */,
+				E4623B6825D5D97100EFF627 /* SNFindController.h */,
+				E4623B6525D5D96800EFF627 /* SNFindController.m */,
+				E4623B6125D5D7A800EFF627 /* SNMenuController.h */,
+				E4623B6225D5D7B100EFF627 /* SNMenuController.m */,
+				E4623B5825D51DFC00EFF627 /* SNMigrationWindowController.h */,
+				E4623B5525D51DEE00EFF627 /* SNMigrationWindowController.m */,
+				E4623B9B25D60A6A00EFF627 /* SNMigrationWindowController.xib */,
+				E4623B4625D4EE4100EFF627 /* SNUtility.h */,
+				E4623B4725D4EE4C00EFF627 /* SNUtility.m */,
+				E4623B5125D51AC100EFF627 /* SNWindow.h */,
+				E4623B5225D51ACA00EFF627 /* SNWindow.m */,
 				E4623B3925D4DD8D00EFF627 /* Stickies.entitlements */,
+				E4623BA525D61C7700EFF627 /* StickiesProtocol.h */,
+				E4623B4025D4DE8700EFF627 /* StickiesService.h */,
+				E4623B4125D4DEAF00EFF627 /* StickiesService.m */,
+				E4623B2E25D4DD8B00EFF627 /* ViewController.h */,
+				E4623B2F25D4DD8B00EFF627 /* ViewController.m */,
+				E4623BBF25D6742500EFF627 /* .SavedStickiesState */,
 			);
 			path = Stickies;
+			sourceTree = "<group>";
+		};
+		E4623B7825D6007200EFF627 /* StickiesMigration */ = {
+			isa = PBXGroup;
+			children = (
+				E4623B7925D6007200EFF627 /* StickiesMigrationProtocol.h */,
+				E4623B7A25D6007200EFF627 /* StickiesMigration.h */,
+				E4623B7B25D6007200EFF627 /* StickiesMigration.m */,
+				E4623B7D25D6007200EFF627 /* main.m */,
+				E4623B7F25D6007200EFF627 /* Info.plist */,
+				E4623BA825D624DF00EFF627 /* Document.h */,
+				E4623BA925D624E900EFF627 /* Document.m */,
+			);
+			path = StickiesMigration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,15 +196,34 @@
 				E4623B2425D4DD8B00EFF627 /* Sources */,
 				E4623B2525D4DD8B00EFF627 /* Frameworks */,
 				E4623B2625D4DD8B00EFF627 /* Resources */,
+				E4623B8625D6007200EFF627 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E4623B8125D6007200EFF627 /* PBXTargetDependency */,
 			);
 			name = Stickies;
 			productName = Stickies;
 			productReference = E4623B2825D4DD8B00EFF627 /* Stickies.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E4623B7625D6007200EFF627 /* StickiesMigration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4623B8325D6007200EFF627 /* Build configuration list for PBXNativeTarget "StickiesMigration" */;
+			buildPhases = (
+				E4623B7325D6007200EFF627 /* Sources */,
+				E4623B7425D6007200EFF627 /* Frameworks */,
+				E4623B7525D6007200EFF627 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StickiesMigration;
+			productName = StickiesMigration;
+			productReference = E4623B7725D6007200EFF627 /* StickiesMigration.xpc */;
+			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
 
@@ -99,6 +234,9 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					E4623B2725D4DD8B00EFF627 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					E4623B7625D6007200EFF627 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -117,6 +255,7 @@
 			projectRoot = "";
 			targets = (
 				E4623B2725D4DD8B00EFF627 /* Stickies */,
+				E4623B7625D6007200EFF627 /* StickiesMigration */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +266,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4623B3225D4DD8D00EFF627 /* Assets.xcassets in Resources */,
+				E4623BB825D6739A00EFF627 /* 283D5D66-E204-497A-A0DB-3B5D7963085A.rtfd in Resources */,
+				E4623B6B25D5F3FB00EFF627 /* SNDocument.xib in Resources */,
+				E4623B9C25D60A6A00EFF627 /* SNMigrationWindowController.xib in Resources */,
+				E4623BC025D6742500EFF627 /* .SavedStickiesState in Resources */,
 				E4623B3525D4DD8D00EFF627 /* Main.storyboard in Resources */,
+				E4623BBC25D6739F00EFF627 /* 9EDB3CA4-AF20-4B48-9583-043940037F0E.rtfd in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4623B7525D6007200EFF627 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,13 +289,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4623B4225D4DEAF00EFF627 /* StickiesService.m in Sources */,
 				E4623B3025D4DD8B00EFF627 /* ViewController.m in Sources */,
 				E4623B3825D4DD8D00EFF627 /* main.m in Sources */,
+				E4623B5C25D5232500EFF627 /* SNDashboardStickiesImporter.m in Sources */,
+				E4623B5325D51ACA00EFF627 /* SNWindow.m in Sources */,
+				E4623B6625D5D96800EFF627 /* SNFindController.m in Sources */,
+				E4623B6325D5D7B100EFF627 /* SNMenuController.m in Sources */,
+				E4623B4F25D50F3800EFF627 /* SNDocument.m in Sources */,
+				E4623B4825D4EE4C00EFF627 /* SNUtility.m in Sources */,
 				E4623B2D25D4DD8B00EFF627 /* AppDelegate.m in Sources */,
+				E4623B5625D51DEE00EFF627 /* SNMigrationWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4623B7325D6007200EFF627 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4623BAA25D624E900EFF627 /* Document.m in Sources */,
+				E4623B7E25D6007200EFF627 /* main.m in Sources */,
+				E4623B7C25D6007200EFF627 /* StickiesMigration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4623B8125D6007200EFF627 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E4623B7625D6007200EFF627 /* StickiesMigration */;
+			targetProxy = E4623B8025D6007200EFF627 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E4623B3325D4DD8D00EFF627 /* Main.storyboard */ = {
@@ -275,8 +452,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stickies/Stickies.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GZ59JRH844;
+				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Stickies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,8 +473,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Stickies/Stickies.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GZ59JRH844;
 				INFOPLIST_FILE = Stickies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +484,36 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.none.Stickies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E4623B8425D6007200EFF627 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GZ59JRH844;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = StickiesMigration/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.none.StickiesMigration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E4623B8525D6007200EFF627 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GZ59JRH844;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = StickiesMigration/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.none.StickiesMigration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -322,6 +534,15 @@
 			buildConfigurations = (
 				E4623B3D25D4DD8D00EFF627 /* Debug */,
 				E4623B3E25D4DD8D00EFF627 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4623B8325D6007200EFF627 /* Build configuration list for PBXNativeTarget "StickiesMigration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4623B8425D6007200EFF627 /* Debug */,
+				E4623B8525D6007200EFF627 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
