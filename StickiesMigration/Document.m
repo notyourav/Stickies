@@ -23,6 +23,7 @@
     return self;
 }
 
+
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [self init]) {
         _Bool temp;
@@ -42,6 +43,7 @@
     }
     return self;
 }
+
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [Document setVersion:1];

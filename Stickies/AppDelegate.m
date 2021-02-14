@@ -7,9 +7,8 @@
 
 #import "AppDelegate.h"
 
+
 @interface AppDelegate ()
-
-
 @end
 
 @implementation AppDelegate
@@ -21,12 +20,17 @@
     
     NSUserDefaults* defaults = NSUserDefaults.standardUserDefaults;
     [defaults registerDefaults:@{
-        @"LegacyStickiesMigrated" : (NSNumber*)kCFBooleanFalse,
+        @"LegacyStickiesMigrated" : @NO,
         @"DefaultWindowSize" : NSStringFromSize(NSMakeSize(300.0, 200.0)),
         @"DefaultWindowFloating" : (NSNumber*)kCFBooleanFalse,
         @"DefaultWindowTranslucent" : (NSNumber*)kCFBooleanFalse,
         @"DefaultFont" : [NSKeyedArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Helvetica" size:12.0] requiringSecureCoding:YES error:nil],
+        @"DefaultStickyColor" : [SNUtility.utility dictionaryRepresentationOfColor:[NSColor colorNamed:@"StickiesYellowColor"]],
+        @"DefaultHighlightColor" : [SNUtility.utility dictionaryRepresentationOfColor:[NSColor colorNamed:@"StickiesHighlightYellowColor"]],
+        @"DefaultSpineColor" : [SNUtility.utility dictionaryRepresentationOfColor:[NSColor colorNamed:@"StickiesSpineYellowColor"]],
+        @"DefaultConrolColor" : [SNUtility.utility dictionaryRepresentationOfColor:[NSColor colorNamed:@"StickiesControlYellowColor"]],
     }];
+
     BOOL isDir;
     BOOL exists = [NSFileManager.defaultManager fileExistsAtPath:[SNUtility.utility stickiesPath] isDirectory:&isDir];
     BOOL loadDefaultStickies = NO;
@@ -48,7 +52,9 @@
     [controller clearRecentDocuments:nil];
     
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"LegacyStickiesMigrated"]) {
-        [self loadSampleStickies];
+        // For debugging let's load the samples.
+        //if (loadDefaultStickies)
+            [self loadSampleStickies];
         onLoadDefaults();
     } else {
         _migrationWindowController = [[SNMigrationWindowController alloc] initWithWindowNibName:@"SNMigrationWindowController"];
@@ -84,8 +90,6 @@
             }
         }];
         
-        
-        
         [migration migrateStickiesColorDictRepArray:[SNUtility.utility sortedBuiltinColorDictRepArray] reply:^(NSError* e) {
             if (e != nil) {
                 NSLog(@"Stickies migration failed: %@", e);
@@ -102,29 +106,31 @@
     }
 }
 
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     [self saveAllDocuments];
 }
+
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
     return NO;
 }
 
+
 - (NSError*)openAllDocuments {
     NSError* e;
     NSArray<NSString*>* content = [NSFileManager.defaultManager contentsOfDirectoryAtPath:SNUtility.utility.stickiesPath error:&e];
     
-    NSLog(@"E: openAllDocuments");
-    
+    NSLog(@"E: openAllDocuments, count = %lu", (unsigned long)content.count);
+    // Iterate over every filename in stickiesPath
     for (NSString* entry in content) {
+        // Skip if .SavedStickiesStates or other
         if ([entry.pathExtension isEqualToString:@"rtfd"]) {
-            NSNumber* state = [SNUtility.utility savedStateForUUID:entry.stringByDeletingPathExtension];
+            NSDictionary* state = [SNUtility.utility savedStateForUUID:entry.stringByDeletingPathExtension];
             SNDocument* doc = [SNDocument alloc];
             if (state != nil) {
-                NSLog(@"E: initWithSavedState %@", entry);
                 doc = [doc initWithSavedState:state];
             } else {
-                NSLog(@"E: initWithExistingRTFDFileName %@", entry);
                 doc = [doc initWithExistingRTFDFileName:entry];
             }
             [NSDocumentController.sharedDocumentController addDocument:doc];
@@ -141,9 +147,11 @@
     return e;
 }
 
+
 - (void)saveAllDocuments {
     [SNUtility.utility writeSavedStickiesStateToPersistentStorage];
 }
+
 
 - (void)loadSampleStickies {
     NSLog(@"E: loading sample stickies");
@@ -159,13 +167,16 @@
     [SNUtility.utility loadSavedStickiesState];
 }
 
+
 - (void)totalNumberOfDocumentsToImport:(int)num {
     [_migrationWindowController setTotalNumberOfDocumentsToImport:num];
 }
 
+
 - (void)updateProgress:(int)progress {
     [_migrationWindowController updateProgress:progress];
 }
+
 
 - (NSUInteger)numberOfDocumentsInContainer {
     NSArray<NSString*>* arr = [NSFileManager.defaultManager contentsOfDirectoryAtPath:SNUtility.utility.stickiesPath error:nil];

@@ -13,33 +13,61 @@
     return YES;
 }
 
+
 - (NSString*)windowNibName {
     return @"SNDocument";
 }
 
-- (instancetype)initWithType:(NSString *)typeName error:(NSError *__autoreleasing  _Nullable *)outError {
-    if (self = [super initWithType:typeName error:outError]) {
-        self.fileType = @"rtfd";
-    }
-    return self;
-}
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController {
     [super windowControllerDidLoadNib:windowController];
-    _stickyWindow = (SNWindow*)windowController.window;
+    _stickyWindow = windowController.window;
     _stickyWindow.delegate = self;
 }
 
-- (instancetype)initWithSavedState:(NSNumber*)state {
-    if (self = [super init]) {
+
+- (instancetype)initWithType:(NSString *)typeName error:(NSError *__autoreleasing  _Nullable *)outError {
+    NSLog(@"E: init with type %@", typeName);
+    if (self = [super initWithType:typeName error:outError]) {
+        self.fileType = @"rtfd";
+        _stickyColor = [SNUtility.utility colorFromDictionaryRepresentation:[NSUserDefaults.standardUserDefaults objectForKey:@"DefaultStickyColor"]];
+
+        _highlightColor = [SNUtility.utility colorFromDictionaryRepresentation:[NSUserDefaults.standardUserDefaults objectForKey:@"DefaultHighlightColor"]];
         
+        _spineColor = [SNUtility.utility colorFromDictionaryRepresentation:[NSUserDefaults.standardUserDefaults objectForKey:@"DefaultSpineColor"]];
+        
+        _controlColor = [SNUtility.utility colorFromDictionaryRepresentation:[NSUserDefaults.standardUserDefaults objectForKey:@"DefaultConrolColor"]];
+        
+        _stickyUUID = [SNUtility.utility generateUUIDAtPath:SNUtility.utility.stickiesPath];
+        
+        NSString* path = [SNUtility.utility.stickiesPath stringByAppendingPathComponent:[_stickyUUID stringByAppendingPathExtension:@"rtfd"]];
+        [NSFileManager.defaultManager createFileAtPath:path contents:nil attributes:nil];
+        [self setFileURL:[NSURL fileURLWithPath:path]];
+        [self updateChangeCount:0];
     }
     return self;
 }
 
-- (instancetype)initWithExistingRTFDFileName:(NSString*)filename {
+
+- (instancetype)initWithSavedState:(NSDictionary*)state {
+    NSLog(@"E: init saved note %@", state[@"UUID"]);
     if (self = [super init]) {
         [self setFileType:@"rtfd"];
+        _stickyUUID = state[@"UUID"];
+        [self setFileURL:[NSURL fileURLWithPath:[SNUtility.utility.stickiesPath stringByAppendingPathComponent:[_stickyUUID stringByAppendingPathExtension:@"rtfd"]]]];
+        _stickyColor = [SNUtility.utility colorFromDictionaryRepresentation:state[@"StickyColor"]];
+        _highlightColor = [SNUtility.utility colorFromDictionaryRepresentation:state[@"HighlightColor"]];
+        _spineColor = [SNUtility.utility colorFromDictionaryRepresentation:state[@"SpineColor"]];
+        _controlColor = [SNUtility.utility colorFromDictionaryRepresentation:state[@"ControlColor"]];
+    }
+    return self;
+}
+
+
+- (instancetype)initWithExistingRTFDFileName:(NSString*)filename {
+    NSLog(@"E: init existing filename %@", filename);
+    if (self = [super init]) {
+        self.fileType = @"rtfd";
         
         // Fetch default colors.
         _stickyColor = [SNUtility.utility colorFromDictionaryRepresentation:[NSUserDefaults.standardUserDefaults objectForKey:@"DefaultStickyColor"]];
@@ -48,7 +76,7 @@
         _controlColor = [SNUtility.utility colorFromDictionaryRepresentation:[NSUserDefaults.standardUserDefaults objectForKey:@"DefaultConrolColor"]]; // typo!! :P
         
         
-        NSString* src = [SNUtility.utility.stickiesPath stringByAppendingPathComponent:@"filename"];
+        NSString* src = [SNUtility.utility.stickiesPath stringByAppendingPathComponent:filename];
         _stickyUUID = [SNUtility.utility generateUUIDAtPath:SNUtility.utility.stickiesPath];
         
         NSError* e = nil;
@@ -63,12 +91,13 @@
     return self;
 }
 
+
 - (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing  _Nullable *)outError {
     if ([typeName isEqualToString:@"rtfd"]) {
         [_stickyWindow saveToFile:url.path];
         id state;
         [self saveWindowState:&state];
-        [SNUtility.utility setSavedState:state forState:_stickyUUID];
+        [SNUtility.utility setSavedState:state forUUID:_stickyUUID];
         [SNUtility.utility writeSavedStickiesStateToPersistentStorage];
         return true;
     } else if (outError != nil) {
@@ -77,7 +106,9 @@
     return false;
 }
 
+
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing  _Nullable *)outError {
+    NSLog(@"E: readFromURL %@", url.relativeString);
     if ([typeName isEqualToString:@"rtfd"]) {
         [_stickyWindow loadFromFile:url.path];
         return true;
@@ -87,8 +118,10 @@
     return false;
 }
 
+
 - (void)openFile {
-    NSString* path = [SNUtility.utility.stickiesPath stringByAppendingPathComponent:[self.stickyUUID stringByAppendingPathComponent:@"rtfd"]];
+    NSString* path = [SNUtility.utility.stickiesPath stringByAppendingPathComponent:[self.stickyUUID stringByAppendingPathExtension:@"rtfd"]];
+    NSLog(@"E: loadFromFile %@", path);
     [_stickyWindow loadFromFile:path];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -96,9 +129,31 @@
     });
 }
 
-- (void)restoreWindowState:(NSNumber*)state {
-    // stub
+
+- (void)restoreWindowState:(NSDictionary*)state {
+    [_stickyWindow setFrame:NSRectFromString(state[@"Frame"]) display:YES];
+    [_stickyWindow setExpandedFrameSize:NSSizeFromString(state[@"ExpandedSize"])];
+    [_stickyWindow setExpandFrameY:[state[@"ExpandFrameY"] doubleValue]];
+    [_stickyWindow hideZoomButtonIfNeeded];
+    [_stickyWindow setTranslucent:[state[@"Translucent"] boolValue]];
+    [_stickyWindow setFloating:[state[@"Floating"] boolValue]];
+    
+    [_stickyWindow updateSpineToolTip:
+     [NSString stringWithFormat:
+      [NSBundle.mainBundle localizedStringForKey:@"Created: %@\nModified: %@"
+       value:@""
+       table:nil],
+      [NSDateFormatter localizedStringFromDate:_creationDate
+       dateStyle:1
+       timeStyle:1],
+      [NSDateFormatter localizedStringFromDate:_modificationDate
+       dateStyle:1
+       timeStyle:1
+       ]]];
+    
+    [_stickyWindow setSpellCheckingTypes:[state[@"SpellCheckingTypes"] unsignedLongLongValue]];
 }
+
 
 - (void)saveWindowState:(id*)stateOut {
     *stateOut = @{

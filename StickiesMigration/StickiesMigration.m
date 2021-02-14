@@ -42,13 +42,16 @@
     NSString* user = [NSString stringWithUTF8String:getpwuid(getuid())->pw_name];
     NSString* dbHidden = [user stringByAppendingPathComponent:@"/Library/.StickiesDatabase"];
     NSString* dbPath = [user stringByAppendingPathComponent:@"/Library/StickiesDatabase"];
+    
     if ([NSFileManager.defaultManager fileExistsAtPath:dbPath]
         || ([NSFileManager.defaultManager fileExistsAtPath:dbHidden] && [NSFileManager.defaultManager moveItemAtPath:dbHidden toPath:dbPath error:nil])) {
         NSData* dbData = [NSData dataWithContentsOfFile:dbPath];
         NSString* folder = [user stringByAppendingPathComponent:@"/Library/Containers/com.none.Stickies/Data/Library/Stickies"];
+        
         id data = [NSUnarchiver unarchiveObjectWithData:dbData];
         if ([data isKindOfClass:[StickiesMigration class]]) {
             NSArray* arr = data;
+            
             [_connection.remoteObjectProxy totalNumberOfDocumentsToImport:(int)arr.count];
             if (arr.count != 0) {
                 NSString* statepath = [folder stringByAppendingPathComponent:@".SavedStickiesState"];
@@ -107,6 +110,7 @@
     }
 }
 
+
 - (NSString*)generateUUIDAtPath:(NSString*)path {
     NSString* uuid = [NSUUID UUID].UUIDString;
     NSString* loc;
@@ -115,6 +119,5 @@
     } while ([NSFileManager.defaultManager fileExistsAtPath:loc]);
     return uuid;
 }
-    
 
 @end

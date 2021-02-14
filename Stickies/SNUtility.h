@@ -29,8 +29,10 @@
 + (SNUtility*)utility;
 
 - (NSMutableArray*)savedStickiesState;
-- (NSNumber*)savedStateForUUID:(id)anID;
-- (void)setSavedState:(id)anID forState:(id)state;
+
+/// Returns a state for a given UUID.
+- (NSDictionary*)savedStateForUUID:(id)anID;
+- (void)setSavedState:(NSDictionary*)state forUUID:(id)uuid;
 - (void)loadSavedStickiesState;
 - (void)writeSavedStickiesStateToPersistentStorage;
 - (NSArray*)sortedBuiltinColorDictRepArray;

@@ -17,11 +17,13 @@
 @property (retain) NSColor* spineColor;
 @property (retain) NSColor* controlColor;
 @property (retain) NSColor* highlightColor;
+@property NSDate* creationDate;
+@property NSDate* modificationDate;
 
-- (instancetype)initWithSavedState:(NSNumber*)state;
+- (instancetype)initWithSavedState:(NSDictionary*)state;
 - (instancetype)initWithExistingRTFDFileName:(NSString*)filename;
 - (void)openFile;
-- (void)restoreWindowState:(NSNumber*)state;
+- (void)restoreWindowState:(NSDictionary*)state;
 - (void)saveWindowState:(id*)stateOut;
 
 @end

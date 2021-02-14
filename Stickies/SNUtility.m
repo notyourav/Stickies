@@ -20,6 +20,7 @@
     return instance;
 }
 
+
 - (instancetype)init {
     if (self = [super init]) {
         _stickiesPath = @"~/Library/Stickies/".stringByExpandingTildeInPath;
@@ -75,11 +76,13 @@
     return self;
 }
 
+
 - (NSMutableArray*)savedStickiesState {
     return [_stickiesState copy];
 }
 
-- (NSNumber*)savedStateForUUID:(id)anID {
+
+- (NSDictionary*)savedStateForUUID:(id)anID {
     NSNumber* n = [_UUIDToIndex objectForKeyedSubscript:anID];
     if (n != nil) {
         return [_stickiesState objectAtIndexedSubscript:[n unsignedIntegerValue]];
@@ -87,16 +90,18 @@
     return nil;
 }
 
-- (void)setSavedState:(id)anID forState:(id)state {
-    NSNumber* n = [_UUIDToIndex objectForKeyedSubscript:state];
+
+- (void)setSavedState:(NSDictionary*)state forUUID:(id)uuid {
+    NSNumber* n = [_UUIDToIndex objectForKeyedSubscript:uuid];
     NSMutableArray* states = _stickiesState;
     if (n != nil) {
-        [states setObject:anID atIndexedSubscript:[n unsignedIntegerValue]];
+        [states setObject:state atIndexedSubscript:[n unsignedIntegerValue]];
     } else {
-        [_UUIDToIndex setObject:[NSNumber numberWithUnsignedInteger:states.count] forKeyedSubscript:state];
-        [_stickiesState addObject:anID];
+        [_UUIDToIndex setObject:[NSNumber numberWithUnsignedInteger:states.count] forKeyedSubscript:uuid];
+        [_stickiesState addObject:state];
     }
 }
+
 
 - (void)loadSavedStickiesState {
     NSMutableArray* contents = [NSMutableArray arrayWithContentsOfFile:self.savedStickiesStatePath];
@@ -116,19 +121,23 @@
     }
 }
 
+
 - (void)writeSavedStickiesStateToPersistentStorage {
     [_stickiesState writeToFile:_savedStickiesStatePath atomically:YES];
 }
+
 
 - (NSArray*)sortedBuiltinColorDictRepArray {
     // stub
     return nil;
 }
 
+
 - (NSColor*)colorFromDictionaryRepresentation:(id)rep {
     // stub
     return nil;
 }
+
 
 - (NSString*)generateUUIDAtPath:(NSString*)path {
     NSString* uuid = [NSUUID UUID].UUIDString;
@@ -138,6 +147,7 @@
     } while ([NSFileManager.defaultManager fileExistsAtPath:loc]);
     return uuid;
 }
+
 
 - (NSDictionary*)dictionaryRepresentationOfColor:(NSColor*)color {
     NSColor* adjusted = [color colorUsingColorSpace:[NSColorSpace sRGBColorSpace]];

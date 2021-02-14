@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E44E4EBE25D79DDA00F9789A /* SNSpineView.m in Sources */ = {isa = PBXBuildFile; fileRef = E44E4EBD25D79DDA00F9789A /* SNSpineView.m */; };
 		E4623B2D25D4DD8B00EFF627 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B2C25D4DD8B00EFF627 /* AppDelegate.m */; };
 		E4623B3025D4DD8B00EFF627 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4623B2F25D4DD8B00EFF627 /* ViewController.m */; };
 		E4623B3225D4DD8D00EFF627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4623B3125D4DD8D00EFF627 /* Assets.xcassets */; };
@@ -56,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E44E4EBC25D79DD000F9789A /* SNSpineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNSpineView.h; sourceTree = "<group>"; };
+		E44E4EBD25D79DDA00F9789A /* SNSpineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNSpineView.m; sourceTree = "<group>"; };
 		E4623B2825D4DD8B00EFF627 /* Stickies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stickies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4623B2B25D4DD8B00EFF627 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4623B2C25D4DD8B00EFF627 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				E4623B2E25D4DD8B00EFF627 /* ViewController.h */,
 				E4623B2F25D4DD8B00EFF627 /* ViewController.m */,
 				E4623BBF25D6742500EFF627 /* .SavedStickiesState */,
+				E44E4EBC25D79DD000F9789A /* SNSpineView.h */,
+				E44E4EBD25D79DDA00F9789A /* SNSpineView.m */,
 			);
 			path = Stickies;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				E4623B4225D4DEAF00EFF627 /* StickiesService.m in Sources */,
 				E4623B3025D4DD8B00EFF627 /* ViewController.m in Sources */,
 				E4623B3825D4DD8D00EFF627 /* main.m in Sources */,
+				E44E4EBE25D79DDA00F9789A /* SNSpineView.m in Sources */,
 				E4623B5C25D5232500EFF627 /* SNDashboardStickiesImporter.m in Sources */,
 				E4623B5325D51ACA00EFF627 /* SNWindow.m in Sources */,
 				E4623B6625D5D96800EFF627 /* SNFindController.m in Sources */,
@@ -456,7 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GZ59JRH844;
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Stickies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GZ59JRH844;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Stickies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
